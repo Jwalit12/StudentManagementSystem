@@ -1,0 +1,24 @@
+<!-- result_management/templates/result_management/course_list.html -->
+{% extends 'result_management/base.html' %}
+
+{% block title %}Courses List - Student Result Management System{% endblock %}
+
+{% block content %}
+  <h2>Courses List</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in courses %}
+        <tr>
+          <td>{{ course.name }}</td>
+          <td><a href="{% url 'delete_course' course.id %}">&#10008;</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,72 @@
+<!-- result_management/templates/result_management/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Result Management System{% endblock %}</title>
+    
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %} style="margin-top: 10px;">Home</a>
+    <a href="{% url 'add_student' %}" {% if 'add_student' in request.path %}class="active"{% endif %}>Add New Students</a>
+    <a href="{% url 'student_list' %}" {% if 'student_list' in request.path %}class="active"{% endif %}>Students List</a>
+    <a href="{% url 'add_course' %}" {% if 'add_course' in request.path %}class="active"{% endif %}>Add New Courses</a>
+    <a href="{% url 'course_list' %}" {% if 'course_list' in request.path %}class="active"{% endif %}>Courses List</a>
+    <a href="{% url 'add_result' %}" {% if 'add_result' in request.path %}class="active"{% endif %}>Add New Results</a>
+    <a href="{% url 'result_list' %}" {% if 'result_list' in request.path %}class="active"{% endif %}>Results List</a>
+</div>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+<style>
+    a {
+        margin-bottom: 10px;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{% static 'images/background.jpg' %}");
+        background-size: cover;
+    }
+
+    .navbar {
+        height: 100vh;
+        width: 200px;
+        background-color: #0b1f43;
+        position: fixed;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .navbar a {
+        padding: 8px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        display: block;
+    }
+
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .navbar a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .content {
+        margin-left: 220px;
+        padding: 16px;
+    }
+
+</style>
+</html>

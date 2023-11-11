@@ -1,0 +1,28 @@
+<!-- result_management/templates/result_management/student_list.html -->
+{% extends 'result_management/base.html' %}
+
+{% block title %}Students List - Student Result Management System{% endblock %}
+
+{% block content %}
+  <h2>Students List</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name & Family name</th>
+        <th>DOB</th>
+        <th>Email</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>{{ student }}</td>
+          <td>{{ student.date_of_birth|date:"m/d/Y" }}</td>
+          <td>{{ student.email }}</td>
+          <td><a href="{% url 'delete_student' student.id %}">&#10008;</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

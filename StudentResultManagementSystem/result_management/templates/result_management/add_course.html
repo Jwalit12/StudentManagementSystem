@@ -1,0 +1,22 @@
+<!-- result_management/templates/result_management/add_course.html -->
+{% extends 'result_management/base.html' %}
+
+{% block title %}Add New Course - Student Result Management System{% endblock %}
+
+{% block content %}
+  <h2>Add New Course</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="display: table-cell; padding: 10px; background-color: rgb(79, 79, 241); color: aliceblue; font-weight: bolder; border-radius: 5px; margin-top: 10px;">Submit</button>
+
+  </form>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
